@@ -2,6 +2,41 @@ table GuestSatisfaction
 	lineageTag: 780a9bc4-0eaa-40b7-88d3-7f92076c7eca
 	sourceLineageTag: [fact].[GuestSatisfaction]
 
+	measure 'Survey Count' = COUNTROWS(GuestSatisfaction)
+		formatString: #,0
+		displayFolder: measures\base\volume
+		lineageTag: 9ced93b0-6a97-4997-9426-55b6109c40c8
+
+	measure 'Avg Satisfaction Score' = AVERAGE(GuestSatisfaction[SatisfactionScore])
+		formatString: 0.00
+		displayFolder: measures\base\survey
+		lineageTag: ba1d3f49-2c65-470a-b532-535ebdea34e4
+
+	measure 'Avg Service Score' = AVERAGE(GuestSatisfaction[ServiceScore])
+		formatString: 0.00
+		displayFolder: measures\base\survey
+		lineageTag: c1ce02f0-449f-400e-bcdc-f86f633bfd9d
+
+	measure 'Avg Cleanliness Score' = AVERAGE(GuestSatisfaction[CleanlinessScore])
+		formatString: 0.00
+		displayFolder: measures\base\survey
+		lineageTag: 5b106730-d4ba-4ab2-94dc-1cfe18693ff1
+
+	measure 'Avg Value Score' = AVERAGE(GuestSatisfaction[ValueScore])
+		formatString: 0.00
+		displayFolder: measures\base\survey
+		lineageTag: d1bc0bee-94a4-4c1a-928b-fb34b9f20665
+
+	measure 'Recommend Count' = CALCULATE([Survey Count], GuestSatisfaction[WouldRecommend] = TRUE())
+		formatString: #,0
+		displayFolder: measures\base\survey
+		lineageTag: efc6a881-33c0-4f85-b5a8-0b3f032caa7d
+
+	measure 'Recommend %' = DIVIDE([Recommend Count], [Survey Count])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: measures\base\survey
+		lineageTag: b7a0d877-0e47-4ec9-a5cb-25d04da6dbc7
+
 	column SurveyKey
 		dataType: int64
 		formatString: 0

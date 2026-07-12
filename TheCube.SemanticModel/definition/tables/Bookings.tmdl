@@ -2,6 +2,121 @@ table Bookings
 	lineageTag: 31ab3a07-ce91-42a1-8ef7-773bfcf4d656
 	sourceLineageTag: [fact].[Bookings]
 
+	measure 'Bookings Count' = COUNTROWS(Bookings)
+		formatString: #,0
+		displayFolder: measures\base\volume
+		lineageTag: 370efb0c-42dc-4ed6-ba39-00efd07f0b4d
+
+	measure 'Rooms Booked' = SUM(Bookings[RoomsBooked])
+		formatString: #,0
+		displayFolder: measures\base\volume
+		lineageTag: 3f615bc3-4555-4391-8b32-56b18e26a9d8
+
+	measure 'Nights Stayed' = SUM(Bookings[NightsStayed])
+		formatString: #,0
+		displayFolder: measures\base\volume
+		lineageTag: e26bd27e-50aa-4818-962c-146d47c789f0
+
+	measure 'Available Room Nights' = SUM(Bookings[AvailableRoomNights])
+		formatString: #,0
+		displayFolder: measures\base\volume
+		lineageTag: 534a76d5-f023-4f24-82e3-c604d8963c20
+
+	measure 'Room Revenue' = SUM(Bookings[RoomRevenue])
+		formatString: $#,0.00;($#,0.00);$0.00
+		displayFolder: measures\base\revenue
+		lineageTag: 9252babb-adf3-45b6-aa7c-3cb886edb1e0
+
+	measure 'Experience Revenue' = SUM(Bookings[ExperienceRevenue])
+		formatString: $#,0.00;($#,0.00);$0.00
+		displayFolder: measures\base\revenue
+		lineageTag: 40b51eb0-dd37-4c5c-97bd-444c4bdeb8bd
+
+	measure 'Other Revenue' = SUM(Bookings[OtherRevenue])
+		formatString: $#,0.00;($#,0.00);$0.00
+		displayFolder: measures\base\revenue
+		lineageTag: ea7a0b5d-ce56-4f77-bde8-681d8bc2574c
+
+	measure 'Discount Amount' = SUM(Bookings[DiscountAmount])
+		formatString: $#,0.00;($#,0.00);$0.00
+		displayFolder: measures\base\revenue
+		lineageTag: 36ed8438-dcc8-4c71-8e53-23a0b647c526
+
+	measure 'Cancellation Amount' = SUM(Bookings[CancellationAmount])
+		formatString: $#,0.00;($#,0.00);$0.00
+		displayFolder: measures\base\revenue
+		lineageTag: eeb71bea-cae1-4fa0-95c9-97288d5fcdf9
+
+	measure 'Gross Revenue' = [Room Revenue] + [Experience Revenue] + [Other Revenue]
+		formatString: $#,0.00;($#,0.00);$0.00
+		displayFolder: measures\base\revenue
+		lineageTag: 2803e4e1-a55d-42b6-94bc-3eae3819d4da
+
+	measure 'Net Revenue' = [Gross Revenue] - [Discount Amount] - [Cancellation Amount]
+		formatString: $#,0.00;($#,0.00);$0.00
+		displayFolder: measures\base\revenue
+		lineageTag: ae720dda-1dc5-4e16-a05e-1161f6a6f3a1
+
+	measure 'Cancelled Bookings' = CALCULATE([Bookings Count], Bookings[IsCancelled] = TRUE())
+		formatString: #,0
+		displayFolder: measures\base\quality
+		lineageTag: 5c98c698-251f-4441-b127-4f523bce042a
+
+	measure 'Active Bookings' = CALCULATE([Bookings Count], Bookings[IsCancelled] = FALSE())
+		formatString: #,0
+		displayFolder: measures\base\quality
+		lineageTag: a99ac1d3-3eaf-4edf-80ea-98b009a62a22
+
+	measure 'Loyalty Bookings' = CALCULATE([Bookings Count], Bookings[IsLoyaltyBooking] = TRUE())
+		formatString: #,0
+		displayFolder: measures\base\quality
+		lineageTag: aa0791ce-9c0d-4033-86e0-147aefeaeb79
+
+	measure 'Cancellation Rate %' = DIVIDE([Cancelled Bookings], [Bookings Count])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: measures\base\rates
+		lineageTag: b17b9234-c82c-488c-80a4-803c76f91a06
+
+	measure 'Loyalty Mix %' = DIVIDE([Loyalty Bookings], [Bookings Count])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: measures\base\rates
+		lineageTag: c6f298a7-22fb-4f64-bd50-3b4a841b1a8b
+
+	measure 'Occupancy %' = DIVIDE([Rooms Booked], [Available Room Nights])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: measures\base\rates
+		lineageTag: 6f7dd9c3-8369-4a2e-9a3f-5cf1588316c8
+
+	measure ADR = DIVIDE([Room Revenue], [Rooms Booked])
+		formatString: $#,0.00;($#,0.00);$0.00
+		displayFolder: measures\base\rates
+		lineageTag: bc240df3-741b-4b00-b1a4-b7e3cc350b21
+
+	measure RevPAR = DIVIDE([Room Revenue], [Available Room Nights])
+		formatString: $#,0.00;($#,0.00);$0.00
+		displayFolder: measures\base\rates
+		lineageTag: d94fadaa-5159-45e5-b5aa-0eb578c5127f
+
+	measure 'Length of Stay' = DIVIDE([Nights Stayed], [Bookings Count])
+		formatString: 0.00
+		displayFolder: measures\base\rates
+		lineageTag: c2168d94-05ec-4eb7-ada2-26d675ac5afc
+
+	measure 'Net Revenue per Booking' = DIVIDE([Net Revenue], [Bookings Count])
+		formatString: $#,0.00;($#,0.00);$0.00
+		displayFolder: measures\base\rates
+		lineageTag: 4d197d13-ceb7-43ec-a377-b00c30433f6c
+
+	measure 'Bookings Count (Booking Date)' = CALCULATE([Bookings Count], USERELATIONSHIP(Bookings[BookingDateKey], 'Date'[DateKey]))
+		formatString: #,0
+		displayFolder: measures\base\time
+		lineageTag: e547bcf3-bd8f-452a-bbfb-6bbd05667a1e
+
+	measure 'Net Revenue (Booking Date)' = CALCULATE([Net Revenue], USERELATIONSHIP(Bookings[BookingDateKey], 'Date'[DateKey]))
+		formatString: $#,0.00;($#,0.00);$0.00
+		displayFolder: measures\base\time
+		lineageTag: 44a59422-ce82-4dc2-aee3-8605d2a39bd3
+
 	column BookingKey
 		dataType: int64
 		formatString: 0
