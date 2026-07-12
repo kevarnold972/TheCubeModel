@@ -7,47 +7,55 @@ table GuestSatisfaction
 		formatString: 0
 		lineageTag: efb85986-17ee-40ca-9808-7eb7e084c88b
 		sourceLineageTag: SurveyKey
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: SurveyKey
 
 		annotation SummarizationSetBy = Automatic
 
 	column StayDateKey
 		dataType: int64
+		isHidden
 		formatString: 0
+		isAvailableInMdx: false
 		lineageTag: 1f35bc37-f7ec-4317-81c4-1eb05e01ebac
 		sourceLineageTag: StayDateKey
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: StayDateKey
 
 		annotation SummarizationSetBy = Automatic
 
 	column PropertyKey
 		dataType: int64
+		isHidden
 		formatString: 0
+		isAvailableInMdx: false
 		lineageTag: c7ccfec9-1926-4390-8607-0b69db113310
 		sourceLineageTag: PropertyKey
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: PropertyKey
 
 		annotation SummarizationSetBy = Automatic
 
 	column GuestKey
 		dataType: int64
+		isHidden
 		formatString: 0
+		isAvailableInMdx: false
 		lineageTag: ecc6268f-3fa7-42ca-9341-05aa2155be46
 		sourceLineageTag: GuestKey
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: GuestKey
 
 		annotation SummarizationSetBy = Automatic
 
 	column ChannelKey
 		dataType: int64
+		isHidden
 		formatString: 0
+		isAvailableInMdx: false
 		lineageTag: 2fdc8118-634f-4350-a479-99b2cb621df4
 		sourceLineageTag: ChannelKey
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: ChannelKey
 
 		annotation SummarizationSetBy = Automatic
@@ -57,7 +65,7 @@ table GuestSatisfaction
 		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
 		lineageTag: 8235592d-0213-4642-88ba-b3a02ba702f1
 		sourceLineageTag: SatisfactionScore
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: SatisfactionScore
 
 		annotation SummarizationSetBy = Automatic
@@ -69,7 +77,7 @@ table GuestSatisfaction
 		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
 		lineageTag: b9292f8a-c40e-43ed-a363-8e55ee4ae606
 		sourceLineageTag: ServiceScore
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: ServiceScore
 
 		annotation SummarizationSetBy = Automatic
@@ -81,7 +89,7 @@ table GuestSatisfaction
 		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
 		lineageTag: 3a3059c0-bdde-439a-9c50-98155a0d2266
 		sourceLineageTag: CleanlinessScore
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: CleanlinessScore
 
 		annotation SummarizationSetBy = Automatic
@@ -93,7 +101,7 @@ table GuestSatisfaction
 		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
 		lineageTag: 3e0481ff-74a3-41bc-9c5d-44fb7d7f94a6
 		sourceLineageTag: ValueScore
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: ValueScore
 
 		annotation SummarizationSetBy = Automatic
@@ -110,20 +118,12 @@ table GuestSatisfaction
 
 		annotation SummarizationSetBy = Automatic
 
-	column updated_at_utc
-		dataType: dateTime
-		formatString: General Date
-		lineageTag: 3a415310-14c4-4fcd-b937-856428170f02
-		sourceLineageTag: updated_at_utc
-		summarizeBy: none
-		sourceColumn: updated_at_utc
-
-		annotation SummarizationSetBy = Automatic
-
 	partition GuestSatisfaction = entity
 		mode: directLake
 		source
 			entityName: GuestSatisfaction
 			schemaName: fact
 			expressionSource: 'DirectLake - lh_thecubemodel'
+
+	annotation TabularEditor_TableGroup = Fact
 

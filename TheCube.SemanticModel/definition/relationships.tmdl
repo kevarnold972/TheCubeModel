@@ -1,0 +1,41 @@
+relationship FK_Bookings_Property
+	fromColumn: Bookings.PropertyKey
+	toColumn: Property.PropertyKey
+
+relationship FK_Bookings_Guest
+	fromColumn: Bookings.GuestKey
+	toColumn: Guest.GuestKey
+
+relationship FK_Bookings_Channel
+	fromColumn: Bookings.ChannelKey
+	toColumn: Channel.ChannelKey
+
+relationship FK_Bookings_Experience
+	fromColumn: Bookings.ExperienceKey
+	toColumn: Experience.ExperienceKey
+
+relationship FK_Bookings_StayDate
+	fromColumn: Bookings.StayDateKey
+	toColumn: Date.DateKey
+
+relationship FK_Bookings_BookingDate
+	isActive: false
+	fromColumn: Bookings.BookingDateKey
+	toColumn: Date.DateKey
+
+relationship FK_GuestSatisfaction_Property
+	fromColumn: GuestSatisfaction.PropertyKey
+	toColumn: Property.PropertyKey
+
+relationship FK_GuestSatisfaction_Guest
+	fromColumn: GuestSatisfaction.GuestKey
+	toColumn: Guest.GuestKey
+
+relationship FK_GuestSatisfaction_Channel
+	fromColumn: GuestSatisfaction.ChannelKey
+	toColumn: Channel.ChannelKey
+
+relationship FK_GuestSatisfaction_StayDate
+	fromColumn: GuestSatisfaction.StayDateKey
+	toColumn: Date.DateKey
+

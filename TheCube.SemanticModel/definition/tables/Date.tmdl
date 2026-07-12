@@ -4,10 +4,11 @@ table Date
 
 	column DateKey
 		dataType: int64
+		isKey
 		formatString: 0
 		lineageTag: 4e111b48-829c-4767-a857-b4b5d54ce5b0
 		sourceLineageTag: DateKey
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: DateKey
 
 		annotation SummarizationSetBy = Automatic
@@ -27,7 +28,7 @@ table Date
 		formatString: 0
 		lineageTag: e58e5312-8ab8-4e42-8794-6e8d896bb4bb
 		sourceLineageTag: CalendarYear
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: CalendarYear
 
 		annotation SummarizationSetBy = Automatic
@@ -37,7 +38,7 @@ table Date
 		formatString: 0
 		lineageTag: 20565376-6d16-4840-a98b-3ac1a670074b
 		sourceLineageTag: CalendarQuarter
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: CalendarQuarter
 
 		annotation SummarizationSetBy = Automatic
@@ -47,7 +48,7 @@ table Date
 		formatString: 0
 		lineageTag: 21422c7e-6681-4d5a-8b0b-d35cc8635617
 		sourceLineageTag: MonthNumber
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: MonthNumber
 
 		annotation SummarizationSetBy = Automatic
@@ -98,20 +99,12 @@ table Date
 
 		annotation SummarizationSetBy = Automatic
 
-	column updated_at_utc
-		dataType: dateTime
-		formatString: General Date
-		lineageTag: 9ba7401b-adfd-442c-a31d-3157f7038494
-		sourceLineageTag: updated_at_utc
-		summarizeBy: none
-		sourceColumn: updated_at_utc
-
-		annotation SummarizationSetBy = Automatic
-
 	partition Date = entity
 		mode: directLake
 		source
 			entityName: Date
 			schemaName: dim
 			expressionSource: 'DirectLake - lh_thecubemodel'
+
+	annotation TabularEditor_TableGroup = Dim
 

@@ -4,10 +4,13 @@ table Property
 
 	column PropertyKey
 		dataType: int64
+		isHidden
+		isKey
 		formatString: 0
+		isAvailableInMdx: false
 		lineageTag: 6ad1454b-8bb7-41ce-9d79-9af3c1cdbcc4
 		sourceLineageTag: PropertyKey
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: PropertyKey
 
 		annotation SummarizationSetBy = Automatic
@@ -62,7 +65,7 @@ table Property
 		formatString: 0
 		lineageTag: 603c9b99-758c-4994-8704-ccf4b00fc377
 		sourceLineageTag: RoomCount
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: RoomCount
 
 		annotation SummarizationSetBy = Automatic
@@ -77,20 +80,12 @@ table Property
 
 		annotation SummarizationSetBy = Automatic
 
-	column updated_at_utc
-		dataType: dateTime
-		formatString: General Date
-		lineageTag: c41d5c45-bd9a-4ad1-ad5f-470f6b0140c7
-		sourceLineageTag: updated_at_utc
-		summarizeBy: none
-		sourceColumn: updated_at_utc
-
-		annotation SummarizationSetBy = Automatic
-
 	partition Property = entity
 		mode: directLake
 		source
 			entityName: Property
 			schemaName: dim
 			expressionSource: 'DirectLake - lh_thecubemodel'
+
+	annotation TabularEditor_TableGroup = Dim
 

@@ -4,10 +4,13 @@ table Guest
 
 	column GuestKey
 		dataType: int64
+		isHidden
+		isKey
 		formatString: 0
+		isAvailableInMdx: false
 		lineageTag: bfc8674f-8a6d-4750-8add-571a3f3be266
 		sourceLineageTag: GuestKey
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: GuestKey
 
 		annotation SummarizationSetBy = Automatic
@@ -105,20 +108,12 @@ table Guest
 
 		annotation SummarizationSetBy = Automatic
 
-	column updated_at_utc
-		dataType: dateTime
-		formatString: General Date
-		lineageTag: 9b14cbfd-36da-4358-88f6-eefa881921f9
-		sourceLineageTag: updated_at_utc
-		summarizeBy: none
-		sourceColumn: updated_at_utc
-
-		annotation SummarizationSetBy = Automatic
-
 	partition Guest = entity
 		mode: directLake
 		source
 			entityName: Guest
 			schemaName: dim
 			expressionSource: 'DirectLake - lh_thecubemodel'
+
+	annotation TabularEditor_TableGroup = Dim
 

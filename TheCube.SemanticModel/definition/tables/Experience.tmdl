@@ -4,10 +4,13 @@ table Experience
 
 	column ExperienceKey
 		dataType: int64
+		isHidden
+		isKey
 		formatString: 0
+		isAvailableInMdx: false
 		lineageTag: 2c81edd8-e4d5-4f43-8b3d-ded308342353
 		sourceLineageTag: ExperienceKey
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: ExperienceKey
 
 		annotation SummarizationSetBy = Automatic
@@ -30,20 +33,12 @@ table Experience
 
 		annotation SummarizationSetBy = Automatic
 
-	column updated_at_utc
-		dataType: dateTime
-		formatString: General Date
-		lineageTag: 458c1fc1-1d93-4f2a-bb4c-56913fcb19dd
-		sourceLineageTag: updated_at_utc
-		summarizeBy: none
-		sourceColumn: updated_at_utc
-
-		annotation SummarizationSetBy = Automatic
-
 	partition Experience = entity
 		mode: directLake
 		source
 			entityName: Experience
 			schemaName: dim
 			expressionSource: 'DirectLake - lh_thecubemodel'
+
+	annotation TabularEditor_TableGroup = Dim
 
