@@ -78,36 +78,6 @@ table Guest
 
 		annotation SummarizationSetBy = Automatic
 
-	column EffectiveStartDate
-		dataType: dateTime
-		formatString: General Date
-		lineageTag: bb667c74-3760-467c-a3ad-28ad540250c7
-		sourceLineageTag: EffectiveStartDate
-		summarizeBy: none
-		sourceColumn: EffectiveStartDate
-
-		annotation SummarizationSetBy = Automatic
-
-	column EffectiveEndDate
-		dataType: dateTime
-		formatString: General Date
-		lineageTag: 214d7e78-2373-414f-8823-85febc460389
-		sourceLineageTag: EffectiveEndDate
-		summarizeBy: none
-		sourceColumn: EffectiveEndDate
-
-		annotation SummarizationSetBy = Automatic
-
-	column IsCurrent
-		dataType: boolean
-		formatString: """TRUE"";""TRUE"";""FALSE"""
-		lineageTag: b7aa163e-1b70-4373-bf3e-0799fdf0752e
-		sourceLineageTag: IsCurrent
-		summarizeBy: none
-		sourceColumn: IsCurrent
-
-		annotation SummarizationSetBy = Automatic
-
 	partition Guest = entity
 		mode: directLake
 		source

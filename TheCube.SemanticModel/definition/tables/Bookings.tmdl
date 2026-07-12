@@ -5,6 +5,7 @@ table Bookings
 	column BookingKey
 		dataType: int64
 		formatString: 0
+		displayFolder: keys
 		lineageTag: 9d5e2989-f4ac-42cf-b3b6-5c8e98e6e3c0
 		sourceLineageTag: BookingKey
 		summarizeBy: none
@@ -17,6 +18,7 @@ table Bookings
 		isHidden
 		formatString: 0
 		isAvailableInMdx: false
+		displayFolder: keys
 		lineageTag: 8e65c90c-a32a-4670-9221-21a67469d59a
 		sourceLineageTag: BookingDateKey
 		summarizeBy: none
@@ -29,6 +31,7 @@ table Bookings
 		isHidden
 		formatString: 0
 		isAvailableInMdx: false
+		displayFolder: keys
 		lineageTag: e2a89a25-903a-4518-b838-54ee2290ddd8
 		sourceLineageTag: StayDateKey
 		summarizeBy: none
@@ -41,6 +44,7 @@ table Bookings
 		isHidden
 		formatString: 0
 		isAvailableInMdx: false
+		displayFolder: keys
 		lineageTag: 3fffab5a-a730-4a0a-8979-a8e691b78802
 		sourceLineageTag: PropertyKey
 		summarizeBy: none
@@ -53,6 +57,7 @@ table Bookings
 		isHidden
 		formatString: 0
 		isAvailableInMdx: false
+		displayFolder: keys
 		lineageTag: 2489d661-0783-4667-a099-ec41b5eb5a74
 		sourceLineageTag: GuestKey
 		summarizeBy: none
@@ -65,6 +70,7 @@ table Bookings
 		isHidden
 		formatString: 0
 		isAvailableInMdx: false
+		displayFolder: keys
 		lineageTag: 2498792b-dc5f-4de0-8b58-6d96e54a0760
 		sourceLineageTag: ChannelKey
 		summarizeBy: none
@@ -77,6 +83,7 @@ table Bookings
 		isHidden
 		formatString: 0
 		isAvailableInMdx: false
+		displayFolder: keys
 		lineageTag: d5ec8041-a2f6-42dd-8bf1-0333d48b080c
 		sourceLineageTag: ExperienceKey
 		summarizeBy: none
@@ -86,7 +93,9 @@ table Bookings
 
 	column NightsStayed
 		dataType: int64
+		isHidden
 		formatString: 0
+		displayFolder: fact
 		lineageTag: c2b1dd91-04b3-4625-8f63-d3892dfb8411
 		sourceLineageTag: NightsStayed
 		summarizeBy: none
@@ -96,7 +105,9 @@ table Bookings
 
 	column RoomsBooked
 		dataType: int64
+		isHidden
 		formatString: 0
+		displayFolder: fact
 		lineageTag: a2daebfb-2482-495a-a164-f723fb78a98d
 		sourceLineageTag: RoomsBooked
 		summarizeBy: none
@@ -106,7 +117,9 @@ table Bookings
 
 	column AvailableRoomNights
 		dataType: int64
+		isHidden
 		formatString: 0
+		displayFolder: fact
 		lineageTag: 8af4d902-5b4c-4fcb-bb2c-0d17d1667119
 		sourceLineageTag: AvailableRoomNights
 		summarizeBy: none
@@ -116,6 +129,8 @@ table Bookings
 
 	column RoomRevenue
 		dataType: double
+		isHidden
+		displayFolder: fact
 		lineageTag: ebc3ea58-4c32-482a-858d-b85688aac3b2
 		sourceLineageTag: RoomRevenue
 		summarizeBy: none
@@ -127,6 +142,8 @@ table Bookings
 
 	column ExperienceRevenue
 		dataType: double
+		isHidden
+		displayFolder: fact
 		lineageTag: 637f8139-fc09-4e22-8b38-53ca1ba416ca
 		sourceLineageTag: ExperienceRevenue
 		summarizeBy: none
@@ -138,6 +155,8 @@ table Bookings
 
 	column OtherRevenue
 		dataType: double
+		isHidden
+		displayFolder: fact
 		lineageTag: 382a39ce-c3c1-4400-83d1-624cf6696157
 		sourceLineageTag: OtherRevenue
 		summarizeBy: none
@@ -149,6 +168,8 @@ table Bookings
 
 	column DiscountAmount
 		dataType: double
+		isHidden
+		displayFolder: fact
 		lineageTag: 380081b9-eb8d-41d1-b4ce-6d6520b134b2
 		sourceLineageTag: DiscountAmount
 		summarizeBy: none
@@ -160,6 +181,8 @@ table Bookings
 
 	column CancellationAmount
 		dataType: double
+		isHidden
+		displayFolder: fact
 		lineageTag: 61820f1f-fb83-4833-ba22-844cde696ba7
 		sourceLineageTag: CancellationAmount
 		summarizeBy: none
@@ -172,6 +195,7 @@ table Bookings
 	column IsCancelled
 		dataType: boolean
 		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: attribute
 		lineageTag: 98dbfcc2-6b2d-47b1-8a28-a899d61beb4b
 		sourceLineageTag: IsCancelled
 		summarizeBy: none
@@ -182,6 +206,7 @@ table Bookings
 	column IsLoyaltyBooking
 		dataType: boolean
 		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: attribute
 		lineageTag: 671de8f6-d997-4851-95ad-3f53be73b57a
 		sourceLineageTag: IsLoyaltyBooking
 		summarizeBy: none
