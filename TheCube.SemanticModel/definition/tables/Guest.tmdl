@@ -1,0 +1,124 @@
+table Guest
+	lineageTag: d8b09297-261f-4e76-8c0c-b1f7f0efac62
+	sourceLineageTag: [dim].[Guest]
+
+	column GuestKey
+		dataType: int64
+		formatString: 0
+		lineageTag: bfc8674f-8a6d-4750-8add-571a3f3be266
+		sourceLineageTag: GuestKey
+		summarizeBy: count
+		sourceColumn: GuestKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column GuestSegment
+		dataType: string
+		lineageTag: acad05ca-a4cf-419b-9550-98bafd8bb400
+		sourceLineageTag: GuestSegment
+		summarizeBy: none
+		sourceColumn: GuestSegment
+
+		annotation SummarizationSetBy = Automatic
+
+	column LoyaltyTier
+		dataType: string
+		lineageTag: 1f06c157-768b-4e69-a179-832404b82245
+		sourceLineageTag: LoyaltyTier
+		summarizeBy: none
+		sourceColumn: LoyaltyTier
+
+		annotation SummarizationSetBy = Automatic
+
+	column AgeGroup
+		dataType: string
+		lineageTag: 1d050b9b-ee50-49e7-bd91-7725a674430f
+		sourceLineageTag: AgeGroup
+		summarizeBy: none
+		sourceColumn: AgeGroup
+
+		annotation SummarizationSetBy = Automatic
+
+	column HomeRegion
+		dataType: string
+		lineageTag: 8671589a-3448-4fed-adb4-c8f0aff0f428
+		sourceLineageTag: HomeRegion
+		summarizeBy: none
+		sourceColumn: HomeRegion
+
+		annotation SummarizationSetBy = Automatic
+
+	column GuestID
+		dataType: string
+		lineageTag: 7306a8f3-b786-4759-8e9e-ff83a3355f0f
+		sourceLineageTag: GuestID
+		summarizeBy: none
+		sourceColumn: GuestID
+
+		annotation SummarizationSetBy = Automatic
+
+	column GuestName
+		dataType: string
+		lineageTag: d8107be1-b2cf-4076-aee1-2ba9f023c654
+		sourceLineageTag: GuestName
+		summarizeBy: none
+		sourceColumn: GuestName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Email
+		dataType: string
+		lineageTag: ab53d9d6-b3b9-4b19-a3fd-3de07f18ce41
+		sourceLineageTag: Email
+		summarizeBy: none
+		sourceColumn: Email
+
+		annotation SummarizationSetBy = Automatic
+
+	column EffectiveStartDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: bb667c74-3760-467c-a3ad-28ad540250c7
+		sourceLineageTag: EffectiveStartDate
+		summarizeBy: none
+		sourceColumn: EffectiveStartDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column EffectiveEndDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 214d7e78-2373-414f-8823-85febc460389
+		sourceLineageTag: EffectiveEndDate
+		summarizeBy: none
+		sourceColumn: EffectiveEndDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsCurrent
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b7aa163e-1b70-4373-bf3e-0799fdf0752e
+		sourceLineageTag: IsCurrent
+		summarizeBy: none
+		sourceColumn: IsCurrent
+
+		annotation SummarizationSetBy = Automatic
+
+	column updated_at_utc
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 9b14cbfd-36da-4358-88f6-eefa881921f9
+		sourceLineageTag: updated_at_utc
+		summarizeBy: none
+		sourceColumn: updated_at_utc
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Guest = entity
+		mode: directLake
+		source
+			entityName: Guest
+			schemaName: dim
+			expressionSource: 'DirectLake - lh_thecubemodel'
+

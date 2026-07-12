@@ -1,0 +1,49 @@
+table Channel
+	lineageTag: 11c3f49f-583b-49ad-8a80-71761b0c5146
+	sourceLineageTag: [dim].[Channel]
+
+	column ChannelKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 091679c5-9dae-4e10-8191-2edfb5bfcf2c
+		sourceLineageTag: ChannelKey
+		summarizeBy: count
+		sourceColumn: ChannelKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ChannelName
+		dataType: string
+		lineageTag: 3228d013-0a0b-45eb-8a00-a92d21049d2f
+		sourceLineageTag: ChannelName
+		summarizeBy: none
+		sourceColumn: ChannelName
+
+		annotation SummarizationSetBy = Automatic
+
+	column ChannelType
+		dataType: string
+		lineageTag: e66c8dac-3c2c-49c9-b9e9-432e6b80e5d8
+		sourceLineageTag: ChannelType
+		summarizeBy: none
+		sourceColumn: ChannelType
+
+		annotation SummarizationSetBy = Automatic
+
+	column updated_at_utc
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 5d6f2cf3-5f27-477f-a9a7-cd5a4be00bbe
+		sourceLineageTag: updated_at_utc
+		summarizeBy: none
+		sourceColumn: updated_at_utc
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Channel = entity
+		mode: directLake
+		source
+			entityName: Channel
+			schemaName: dim
+			expressionSource: 'DirectLake - lh_thecubemodel'
+

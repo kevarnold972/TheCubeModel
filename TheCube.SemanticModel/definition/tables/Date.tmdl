@@ -1,0 +1,117 @@
+table Date
+	lineageTag: 4e18f57d-cebf-40e8-b86f-79d505c5cf8f
+	sourceLineageTag: [dim].[Date]
+
+	column DateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 4e111b48-829c-4767-a857-b4b5d54ce5b0
+		sourceLineageTag: DateKey
+		summarizeBy: count
+		sourceColumn: DateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column FullDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 5e199471-e604-4bfb-9d89-e738b35614d1
+		sourceLineageTag: FullDate
+		summarizeBy: none
+		sourceColumn: FullDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column CalendarYear
+		dataType: int64
+		formatString: 0
+		lineageTag: e58e5312-8ab8-4e42-8794-6e8d896bb4bb
+		sourceLineageTag: CalendarYear
+		summarizeBy: sum
+		sourceColumn: CalendarYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column CalendarQuarter
+		dataType: int64
+		formatString: 0
+		lineageTag: 20565376-6d16-4840-a98b-3ac1a670074b
+		sourceLineageTag: CalendarQuarter
+		summarizeBy: sum
+		sourceColumn: CalendarQuarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: 21422c7e-6681-4d5a-8b0b-d35cc8635617
+		sourceLineageTag: MonthNumber
+		summarizeBy: sum
+		sourceColumn: MonthNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthName
+		dataType: string
+		lineageTag: e4c43c7e-fdbe-45b2-9cd9-5861934f1eef
+		sourceLineageTag: MonthName
+		summarizeBy: none
+		sourceColumn: MonthName
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearMonth
+		dataType: string
+		lineageTag: b0d96019-912b-4a81-aaf2-739cc12a9d16
+		sourceLineageTag: YearMonth
+		summarizeBy: none
+		sourceColumn: YearMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfWeekName
+		dataType: string
+		lineageTag: a23b9f4e-ea3c-4d8a-95f0-4e36fc24e577
+		sourceLineageTag: DayOfWeekName
+		summarizeBy: none
+		sourceColumn: DayOfWeekName
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsWeekend
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 604ac28e-8a99-4f74-90c6-59b9023cbb7b
+		sourceLineageTag: IsWeekend
+		summarizeBy: none
+		sourceColumn: IsWeekend
+
+		annotation SummarizationSetBy = Automatic
+
+	column Season
+		dataType: string
+		lineageTag: f5a6bcaf-f100-49ca-9d84-602c1b57cf63
+		sourceLineageTag: Season
+		summarizeBy: none
+		sourceColumn: Season
+
+		annotation SummarizationSetBy = Automatic
+
+	column updated_at_utc
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 9ba7401b-adfd-442c-a31d-3157f7038494
+		sourceLineageTag: updated_at_utc
+		summarizeBy: none
+		sourceColumn: updated_at_utc
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Date = entity
+		mode: directLake
+		source
+			entityName: Date
+			schemaName: dim
+			expressionSource: 'DirectLake - lh_thecubemodel'
+

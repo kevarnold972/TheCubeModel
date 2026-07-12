@@ -1,0 +1,9 @@
+expression 'DirectLake - lh_thecubemodel' =
+		let
+		    Source = AzureStorage.DataLake("https://onelake.dfs.fabric.microsoft.com/de710a65-38c4-4fcc-9343-f647a74d49b4/ff105ea7-174c-43bd-9e8f-bf0d104242fc", [HierarchicalNavigation=true])
+		in
+		    Source
+	lineageTag: 746f13e8-8b76-44a5-9a33-d82e261e6710
+
+	annotation PBI_IncludeFutureArtifacts = False
+

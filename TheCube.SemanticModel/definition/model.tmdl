@@ -1,0 +1,22 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["DirectLake - lh_thecubemodel"]
+
+annotation PBI_ProTooling = ["DirectLakeOnOneLakeInWeb"]
+
+ref table Property
+ref table Channel
+ref table GuestSatisfaction
+ref table Date
+ref table Bookings
+ref table Guest
+ref table Experience
+

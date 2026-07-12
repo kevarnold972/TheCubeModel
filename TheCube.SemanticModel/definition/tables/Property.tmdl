@@ -1,0 +1,96 @@
+table Property
+	lineageTag: 09154edd-aeec-4c4f-9ecc-0faf50382422
+	sourceLineageTag: [dim].[Property]
+
+	column PropertyKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 6ad1454b-8bb7-41ce-9d79-9af3c1cdbcc4
+		sourceLineageTag: PropertyKey
+		summarizeBy: count
+		sourceColumn: PropertyKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column PropertyName
+		dataType: string
+		lineageTag: 8a5ef224-9824-4c58-8330-a83830f7c790
+		sourceLineageTag: PropertyName
+		summarizeBy: none
+		sourceColumn: PropertyName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: 9da43e5e-7a52-4724-9d72-6248e881972d
+		sourceLineageTag: Region
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column Market
+		dataType: string
+		lineageTag: a1c2b81e-4afb-49b5-b3a9-d19d5f4469cf
+		sourceLineageTag: Market
+		summarizeBy: none
+		sourceColumn: Market
+
+		annotation SummarizationSetBy = Automatic
+
+	column PropertyType
+		dataType: string
+		lineageTag: c006e8c5-698c-40fb-823c-8756891f79e9
+		sourceLineageTag: PropertyType
+		summarizeBy: none
+		sourceColumn: PropertyType
+
+		annotation SummarizationSetBy = Automatic
+
+	column LuxuryTier
+		dataType: string
+		lineageTag: 101e2734-155f-4d57-81e6-b3017e11020c
+		sourceLineageTag: LuxuryTier
+		summarizeBy: none
+		sourceColumn: LuxuryTier
+
+		annotation SummarizationSetBy = Automatic
+
+	column RoomCount
+		dataType: int64
+		formatString: 0
+		lineageTag: 603c9b99-758c-4994-8704-ccf4b00fc377
+		sourceLineageTag: RoomCount
+		summarizeBy: sum
+		sourceColumn: RoomCount
+
+		annotation SummarizationSetBy = Automatic
+
+	column OpenDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: eff58a46-ffe5-4ef1-a4fd-dd97dc926f8b
+		sourceLineageTag: OpenDate
+		summarizeBy: none
+		sourceColumn: OpenDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column updated_at_utc
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c41d5c45-bd9a-4ad1-ad5f-470f6b0140c7
+		sourceLineageTag: updated_at_utc
+		summarizeBy: none
+		sourceColumn: updated_at_utc
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Property = entity
+		mode: directLake
+		source
+			entityName: Property
+			schemaName: dim
+			expressionSource: 'DirectLake - lh_thecubemodel'
+

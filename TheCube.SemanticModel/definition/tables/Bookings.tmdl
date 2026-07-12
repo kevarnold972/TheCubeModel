@@ -1,0 +1,196 @@
+table Bookings
+	lineageTag: 31ab3a07-ce91-42a1-8ef7-773bfcf4d656
+	sourceLineageTag: [fact].[Bookings]
+
+	column BookingKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 9d5e2989-f4ac-42cf-b3b6-5c8e98e6e3c0
+		sourceLineageTag: BookingKey
+		summarizeBy: count
+		sourceColumn: BookingKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column BookingDateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 8e65c90c-a32a-4670-9221-21a67469d59a
+		sourceLineageTag: BookingDateKey
+		summarizeBy: count
+		sourceColumn: BookingDateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column StayDateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: e2a89a25-903a-4518-b838-54ee2290ddd8
+		sourceLineageTag: StayDateKey
+		summarizeBy: count
+		sourceColumn: StayDateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column PropertyKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 3fffab5a-a730-4a0a-8979-a8e691b78802
+		sourceLineageTag: PropertyKey
+		summarizeBy: count
+		sourceColumn: PropertyKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column GuestKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 2489d661-0783-4667-a099-ec41b5eb5a74
+		sourceLineageTag: GuestKey
+		summarizeBy: count
+		sourceColumn: GuestKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ChannelKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 2498792b-dc5f-4de0-8b58-6d96e54a0760
+		sourceLineageTag: ChannelKey
+		summarizeBy: count
+		sourceColumn: ChannelKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExperienceKey
+		dataType: int64
+		formatString: 0
+		lineageTag: d5ec8041-a2f6-42dd-8bf1-0333d48b080c
+		sourceLineageTag: ExperienceKey
+		summarizeBy: count
+		sourceColumn: ExperienceKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column NightsStayed
+		dataType: int64
+		formatString: 0
+		lineageTag: c2b1dd91-04b3-4625-8f63-d3892dfb8411
+		sourceLineageTag: NightsStayed
+		summarizeBy: sum
+		sourceColumn: NightsStayed
+
+		annotation SummarizationSetBy = Automatic
+
+	column RoomsBooked
+		dataType: int64
+		formatString: 0
+		lineageTag: a2daebfb-2482-495a-a164-f723fb78a98d
+		sourceLineageTag: RoomsBooked
+		summarizeBy: sum
+		sourceColumn: RoomsBooked
+
+		annotation SummarizationSetBy = Automatic
+
+	column AvailableRoomNights
+		dataType: int64
+		formatString: 0
+		lineageTag: 8af4d902-5b4c-4fcb-bb2c-0d17d1667119
+		sourceLineageTag: AvailableRoomNights
+		summarizeBy: sum
+		sourceColumn: AvailableRoomNights
+
+		annotation SummarizationSetBy = Automatic
+
+	column RoomRevenue
+		dataType: double
+		lineageTag: ebc3ea58-4c32-482a-858d-b85688aac3b2
+		sourceLineageTag: RoomRevenue
+		summarizeBy: sum
+		sourceColumn: RoomRevenue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ExperienceRevenue
+		dataType: double
+		lineageTag: 637f8139-fc09-4e22-8b38-53ca1ba416ca
+		sourceLineageTag: ExperienceRevenue
+		summarizeBy: sum
+		sourceColumn: ExperienceRevenue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OtherRevenue
+		dataType: double
+		lineageTag: 382a39ce-c3c1-4400-83d1-624cf6696157
+		sourceLineageTag: OtherRevenue
+		summarizeBy: sum
+		sourceColumn: OtherRevenue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DiscountAmount
+		dataType: double
+		lineageTag: 380081b9-eb8d-41d1-b4ce-6d6520b134b2
+		sourceLineageTag: DiscountAmount
+		summarizeBy: sum
+		sourceColumn: DiscountAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CancellationAmount
+		dataType: double
+		lineageTag: 61820f1f-fb83-4833-ba22-844cde696ba7
+		sourceLineageTag: CancellationAmount
+		summarizeBy: sum
+		sourceColumn: CancellationAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IsCancelled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 98dbfcc2-6b2d-47b1-8a28-a899d61beb4b
+		sourceLineageTag: IsCancelled
+		summarizeBy: none
+		sourceColumn: IsCancelled
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsLoyaltyBooking
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 671de8f6-d997-4851-95ad-3f53be73b57a
+		sourceLineageTag: IsLoyaltyBooking
+		summarizeBy: none
+		sourceColumn: IsLoyaltyBooking
+
+		annotation SummarizationSetBy = Automatic
+
+	column updated_at_utc
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 300b95d8-1976-4254-9ae1-b66cc220a564
+		sourceLineageTag: updated_at_utc
+		summarizeBy: none
+		sourceColumn: updated_at_utc
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Bookings = entity
+		mode: directLake
+		source
+			entityName: Bookings
+			schemaName: fact
+			expressionSource: 'DirectLake - lh_thecubemodel'
+

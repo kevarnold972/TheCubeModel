@@ -1,0 +1,86 @@
+[
+  {
+    "name": "GuestSatisfaction",
+    "path": "/Tables/fact",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/dw/FactGuestSatisfaction",
+        "itemId": "80449c14-0815-4fea-b2aa-fa5971dd7c83",
+        "workspaceId": "637db207-15ce-4862-8e0c-988caace7f03"
+      }
+    }
+  },
+  {
+    "name": "Bookings",
+    "path": "/Tables/fact",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/dw/FactBookings",
+        "itemId": "80449c14-0815-4fea-b2aa-fa5971dd7c83",
+        "workspaceId": "637db207-15ce-4862-8e0c-988caace7f03"
+      }
+    }
+  },
+  {
+    "name": "Property",
+    "path": "/Tables/dim",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/dw/DimProperty",
+        "itemId": "80449c14-0815-4fea-b2aa-fa5971dd7c83",
+        "workspaceId": "637db207-15ce-4862-8e0c-988caace7f03"
+      }
+    }
+  },
+  {
+    "name": "Guest",
+    "path": "/Tables/dim",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/dw/DimGuest",
+        "itemId": "80449c14-0815-4fea-b2aa-fa5971dd7c83",
+        "workspaceId": "637db207-15ce-4862-8e0c-988caace7f03"
+      }
+    }
+  },
+  {
+    "name": "Experience",
+    "path": "/Tables/dim",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/dw/DimExperience",
+        "itemId": "80449c14-0815-4fea-b2aa-fa5971dd7c83",
+        "workspaceId": "637db207-15ce-4862-8e0c-988caace7f03"
+      }
+    }
+  },
+  {
+    "name": "Date",
+    "path": "/Tables/dim",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/dw/DimDate",
+        "itemId": "80449c14-0815-4fea-b2aa-fa5971dd7c83",
+        "workspaceId": "637db207-15ce-4862-8e0c-988caace7f03"
+      }
+    }
+  },
+  {
+    "name": "Channel",
+    "path": "/Tables/dim",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/dw/DimChannel",
+        "itemId": "80449c14-0815-4fea-b2aa-fa5971dd7c83",
+        "workspaceId": "637db207-15ce-4862-8e0c-988caace7f03"
+      }
+    }
+  }
+]
