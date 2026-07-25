@@ -6,6 +6,10 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
+extendedProperty TabularEditor_ModelDaxPkgSeq = 2
+
+extendedProperty TabularEditor_ModelDaxPkgTable = {}
+
 annotation __PBI_TimeIntelligenceEnabled = 1
 
 annotation PBI_QueryOrder = ["DirectLake - lh_thecubemodel"]
