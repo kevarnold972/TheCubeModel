@@ -1,3 +1,4 @@
+/// Hotels and resorts in the portfolio.
 table Property
 	lineageTag: 09154edd-aeec-4c4f-9ecc-0faf50382422
 	sourceLineageTag: [dim].[Property]
@@ -15,6 +16,7 @@ table Property
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Name of the property.
 	column PropertyName
 		dataType: string
 		lineageTag: 8a5ef224-9824-4c58-8330-a83830f7c790
@@ -24,6 +26,7 @@ table Property
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Property location type: Urban, Coastal, Mountain or Leisure.
 	column Region
 		dataType: string
 		lineageTag: 9da43e5e-7a52-4724-9d72-6248e881972d
@@ -33,6 +36,7 @@ table Property
 
 		annotation SummarizationSetBy = Automatic
 
+	/// City or market the property is in.
 	column Market
 		dataType: string
 		lineageTag: a1c2b81e-4afb-49b5-b3a9-d19d5f4469cf
@@ -42,6 +46,7 @@ table Property
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Hotel, Resort, Boutique or Lodge.
 	column PropertyType
 		dataType: string
 		lineageTag: c006e8c5-698c-40fb-823c-8756891f79e9
@@ -51,6 +56,7 @@ table Property
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Standard, Premium or Luxury.
 	column LuxuryTier
 		dataType: string
 		lineageTag: 101e2734-155f-4d57-81e6-b3017e11020c
@@ -60,6 +66,7 @@ table Property
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Number of rooms at the property (current, not by date).
 	column RoomCount
 		dataType: int64
 		formatString: 0
@@ -70,9 +77,10 @@ table Property
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Date the property opened.
 	column OpenDate
 		dataType: dateTime
-		formatString: General Date
+		formatString: mm/dd/yyyy
 		lineageTag: eff58a46-ffe5-4ef1-a4fd-dd97dc926f8b
 		sourceLineageTag: OpenDate
 		summarizeBy: none

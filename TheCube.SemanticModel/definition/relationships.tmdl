@@ -39,3 +39,19 @@ relationship FK_GuestSatisfaction_StayDate
 	fromColumn: GuestSatisfaction.StayDateKey
 	toColumn: Date.DateKey
 
+relationship 6896cb4e-8e4d-441e-a0ec-f6a93207f41c
+	fromColumn: PropertyInventory.PropertyKey
+	toColumn: Property.PropertyKey
+
+relationship 895de8bd-e794-48b3-9aa8-63eb428a3cd9
+	fromColumn: PropertyInventory.DateKey
+	toColumn: Date.DateKey
+
+relationship 90305596-dd89-42fd-a64a-449befef2352
+	fromColumn: StayNight.PropertyKey
+	toColumn: Property.PropertyKey
+
+relationship 3db6cd89-117e-4edd-92cf-0e16a644e2d8
+	fromColumn: StayNight.StayDateKey
+	toColumn: Date.DateKey
+

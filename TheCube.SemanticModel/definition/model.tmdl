@@ -25,4 +25,6 @@ ref table Date
 ref table Bookings
 ref table Guest
 ref table Experience
+ref table PropertyInventory
+ref table StayNight
 

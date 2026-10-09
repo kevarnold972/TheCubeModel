@@ -1,0 +1,171 @@
+/// One row per booking per night stayed (cancelled bookings excluded). Source for occupancy, ADR and RevPAR.
+table StayNight
+	lineageTag: 39cf6df7-46df-4fdf-aa34-60165cfed9a8
+	sourceLineageTag: [fact].[StayNight]
+
+	/// Number of booking-night rows.
+	measure 'Stay Night Count' = COUNTROWS(StayNight)
+		formatString: #,0
+		displayFolder: measures\base\volume
+		lineageTag: b9deea1b-267e-4cc4-82db-a412b31d4f71
+
+	/// Rooms occupied summed over nights stayed.
+	measure 'Occupied Room Nights' = SUM(StayNight[RoomsOccupied])
+		formatString: #,0
+		displayFolder: measures\base\volume
+		lineageTag: cb9c1e96-8c57-44f1-9f26-06f688a68f3a
+
+	/// Room revenue spread across each night stayed.
+	measure 'Room Revenue (Stay Night)' = SUM(StayNight[RoomRevenue])
+		formatString: $#,0.00;($#,0.00);$0.00
+		displayFolder: measures\base\revenue
+		lineageTag: 144fa946-0644-4fd1-ad55-95c5ef297a86
+
+	/// Experience revenue spread across each night stayed.
+	measure 'Experience Revenue (Stay Night)' = SUM(StayNight[ExperienceRevenue])
+		formatString: $#,0.00;($#,0.00);$0.00
+		displayFolder: measures\base\revenue
+		lineageTag: 241c9645-9bcd-413a-9056-0083a09daf4a
+
+	/// Other revenue spread across each night stayed.
+	measure 'Other Revenue (Stay Night)' = SUM(StayNight[OtherRevenue])
+		formatString: $#,0.00;($#,0.00);$0.00
+		displayFolder: measures\base\revenue
+		lineageTag: 939e56ef-aa7d-479b-9382-f32fcda0452a
+
+	/// Discounts spread across each night stayed.
+	measure 'Discount Amount (Stay Night)' = SUM(StayNight[DiscountAmount])
+		formatString: $#,0.00;($#,0.00);$0.00
+		displayFolder: measures\base\revenue
+		lineageTag: 1e1ae0c4-62ef-47f5-a26b-fc6a16a5fa2f
+
+	/// Room + experience + other revenue by night stayed.
+	measure 'Gross Revenue (Stay Night)' = [Room Revenue (Stay Night)] + [Experience Revenue (Stay Night)] + [Other Revenue (Stay Night)]
+		formatString: $#,0.00;($#,0.00);$0.00
+		displayFolder: measures\base\revenue
+		lineageTag: 6dc2edc8-9a59-4e4f-a03d-d00f6cf4ad51
+
+	/// Gross revenue by night stayed, less discounts.
+	measure 'Net Revenue (Stay Night)' = [Gross Revenue (Stay Night)] - [Discount Amount (Stay Night)]
+		formatString: $#,0.00;($#,0.00);$0.00
+		displayFolder: measures\base\revenue
+		lineageTag: c437ca15-820b-4614-ab74-fc66a23b9648
+
+	/// Occupied room nights divided by sellable room nights.
+	measure 'Occupancy %' = DIVIDE([Occupied Room Nights], [Sellable Room Nights])
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		displayFolder: measures\base\rates
+		lineageTag: 1b36b1d1-8efe-4a87-81af-42a581d1d578
+
+	/// Average daily rate: room revenue per occupied room night.
+	measure ADR = DIVIDE([Room Revenue (Stay Night)], [Occupied Room Nights])
+		formatString: $#,0.00;($#,0.00);$0.00
+		displayFolder: measures\base\rates
+		lineageTag: 312cc0bb-ab35-442e-9200-4c1c9f230b0c
+
+	/// Room revenue per sellable room night.
+	measure RevPAR = DIVIDE([Room Revenue (Stay Night)], [Sellable Room Nights])
+		formatString: $#,0.00;($#,0.00);$0.00
+		displayFolder: measures\base\rates
+		lineageTag: 0b158013-63b8-45be-913a-816e1abfa1a4
+
+	/// Total net revenue (room + experience + other - discounts) per sellable room night.
+	measure TRevPAR = DIVIDE([Net Revenue (Stay Night)], [Sellable Room Nights])
+		formatString: $#,0.00;($#,0.00);$0.00
+		displayFolder: measures\base\rates
+		lineageTag: 1e413bb5-bad5-42a3-8981-02561a81a8ab
+
+	column StayDateKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		isAvailableInMdx: false
+		displayFolder: keys
+		lineageTag: 39c39c0a-b66b-48af-9f3b-0cbebf1e1b9e
+		sourceLineageTag: StayDateKey
+		summarizeBy: none
+		sourceColumn: StayDateKey
+
+	column PropertyKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		isAvailableInMdx: false
+		displayFolder: keys
+		lineageTag: 67a186be-fd07-4207-8def-3f643615dfdb
+		sourceLineageTag: PropertyKey
+		summarizeBy: none
+		sourceColumn: PropertyKey
+
+	/// Which night of the stay this row is (1 = arrival night).
+	column NightNumber
+		dataType: int64
+		formatString: 0
+		displayFolder: attribute
+		lineageTag: a1ea15c4-1dc7-4fdc-8c18-2f29189e8550
+		sourceLineageTag: NightNumber
+		summarizeBy: none
+		sourceColumn: NightNumber
+
+	column RoomsOccupied
+		dataType: int64
+		isHidden
+		formatString: 0
+		isAvailableInMdx: false
+		displayFolder: fact
+		lineageTag: 6dfc41d5-51f5-4911-b597-2247f6100cfd
+		sourceLineageTag: RoomsOccupied
+		summarizeBy: none
+		sourceColumn: RoomsOccupied
+
+	column RoomRevenue
+		dataType: decimal
+		isHidden
+		isAvailableInMdx: false
+		displayFolder: fact
+		lineageTag: 61ee595e-41df-4abe-a467-324276c8e84e
+		sourceLineageTag: RoomRevenue
+		summarizeBy: none
+		sourceColumn: RoomRevenue
+
+	column ExperienceRevenue
+		dataType: decimal
+		isHidden
+		isAvailableInMdx: false
+		displayFolder: fact
+		lineageTag: 7283d8a3-ebd2-4968-9d0e-527c804dc1b4
+		sourceLineageTag: ExperienceRevenue
+		summarizeBy: none
+		sourceColumn: ExperienceRevenue
+
+	column OtherRevenue
+		dataType: decimal
+		isHidden
+		isAvailableInMdx: false
+		displayFolder: fact
+		lineageTag: 13081ae0-abc6-4df9-9a51-359d7745eb92
+		sourceLineageTag: OtherRevenue
+		summarizeBy: none
+		sourceColumn: OtherRevenue
+
+	column DiscountAmount
+		dataType: decimal
+		isHidden
+		isAvailableInMdx: false
+		displayFolder: fact
+		lineageTag: 58bcc216-274d-40cc-9a92-325faf6d98ac
+		sourceLineageTag: DiscountAmount
+		summarizeBy: none
+		sourceColumn: DiscountAmount
+
+	partition StayNight = entity
+		mode: directLake
+		source
+			entityName: StayNight
+			schemaName: fact
+			expressionSource: 'DirectLake - lh_thecubemodel'
+
+	annotation IsTableInBiModel = True
+
+	annotation TabularEditor_TableGroup = Fact
+

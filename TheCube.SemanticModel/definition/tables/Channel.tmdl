@@ -1,3 +1,4 @@
+/// Sales channel a booking came through.
 table Channel
 	lineageTag: 11c3f49f-583b-49ad-8a80-71761b0c5146
 	sourceLineageTag: [dim].[Channel]
@@ -15,6 +16,7 @@ table Channel
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Specific booking channel, e.g. Direct Web, Mobile App, OTA Global.
 	column ChannelName
 		dataType: string
 		lineageTag: 3228d013-0a0b-45eb-8a00-a92d21049d2f
@@ -24,6 +26,7 @@ table Channel
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Channel grouping: Direct, OTA, Corporate or Agency.
 	column ChannelType
 		dataType: string
 		lineageTag: e66c8dac-3c2c-49c9-b9e9-432e6b80e5d8

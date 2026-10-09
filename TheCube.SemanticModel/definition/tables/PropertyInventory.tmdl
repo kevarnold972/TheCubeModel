@@ -1,0 +1,107 @@
+/// One row per property per day with room capacity, out-of-service and sellable rooms. Denominator for occupancy and RevPAR.
+table PropertyInventory
+	lineageTag: 1cfd9e28-1447-4ef0-bb1e-8acb9ecc2be4
+	sourceLineageTag: [fact].[PropertyInventory]
+
+	/// Number of property-day inventory rows.
+	measure 'Inventory Count' = COUNTROWS(PropertyInventory)
+		formatString: #,0
+		displayFolder: measures\base\volume
+		lineageTag: 744dafa6-ebef-4008-9e91-697d41751fb9
+
+	/// Total room capacity summed over the selected days (room-nights).
+	measure 'Capacity Room Nights' = SUM(PropertyInventory[RoomCapacity])
+		formatString: #,0
+		displayFolder: measures\base\volume
+		lineageTag: d80857ab-fc18-4248-b0a8-b7ffad785e68
+
+	/// Rooms out of service summed over the selected days (room-nights).
+	measure 'Out of Service Room Nights' = SUM(PropertyInventory[RoomsOutOfService])
+		formatString: #,0
+		displayFolder: measures\base\volume
+		lineageTag: 31c5f9a2-b11e-43d9-97c9-77da61b2b84f
+
+	/// Rooms available to sell summed over the selected days (room-nights). Denominator for Occupancy % and RevPAR.
+	measure 'Sellable Room Nights' = SUM(PropertyInventory[RoomsSellable])
+		formatString: #,0
+		displayFolder: measures\base\volume
+		lineageTag: a7f2bcfe-077d-448c-83c7-7012f708fca8
+
+	/// Share of capacity room-nights that were out of service.
+	measure 'Out of Service %' = DIVIDE([Out of Service Room Nights], [Capacity Room Nights])
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		displayFolder: measures\base\rates
+		lineageTag: 1959a203-d7ff-421f-ba35-e420ba947172
+
+	/// Average sellable rooms per day across the selected dates (a non-summed view of inventory).
+	measure 'Avg Daily Sellable Rooms' = AVERAGEX(VALUES('Date'[DateKey]), [Sellable Room Nights])
+		formatString: #,0.0
+		displayFolder: measures\base\volume
+		lineageTag: d10740ab-8651-4451-893d-6cc53947107d
+
+	column DateKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		isAvailableInMdx: false
+		displayFolder: keys
+		lineageTag: a01c7dd0-efad-4b57-92d4-e16990d9595a
+		sourceLineageTag: DateKey
+		summarizeBy: none
+		sourceColumn: DateKey
+
+	column PropertyKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		isAvailableInMdx: false
+		displayFolder: keys
+		lineageTag: b87c9969-75a7-4fe4-a5b8-a6072cab8f5d
+		sourceLineageTag: PropertyKey
+		summarizeBy: none
+		sourceColumn: PropertyKey
+
+	column RoomCapacity
+		dataType: int64
+		isHidden
+		formatString: 0
+		isAvailableInMdx: false
+		displayFolder: fact
+		lineageTag: ba41cc10-cc6c-4d26-8cd7-bc06fdecca6e
+		sourceLineageTag: RoomCapacity
+		summarizeBy: none
+		sourceColumn: RoomCapacity
+
+	column RoomsOutOfService
+		dataType: int64
+		isHidden
+		formatString: 0
+		isAvailableInMdx: false
+		displayFolder: fact
+		lineageTag: fd98234f-c97f-42ea-85d4-94251d4a3057
+		sourceLineageTag: RoomsOutOfService
+		summarizeBy: none
+		sourceColumn: RoomsOutOfService
+
+	column RoomsSellable
+		dataType: int64
+		isHidden
+		formatString: 0
+		isAvailableInMdx: false
+		displayFolder: fact
+		lineageTag: 980093cf-d067-4ef2-abfc-07e11638c4bd
+		sourceLineageTag: RoomsSellable
+		summarizeBy: none
+		sourceColumn: RoomsSellable
+
+	partition PropertyInventory = entity
+		mode: directLake
+		source
+			entityName: PropertyInventory
+			schemaName: fact
+			expressionSource: 'DirectLake - lh_thecubemodel'
+
+	annotation IsTableInBiModel = True
+
+	annotation TabularEditor_TableGroup = Fact
+

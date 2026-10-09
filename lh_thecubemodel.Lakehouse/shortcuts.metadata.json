@@ -1,5 +1,29 @@
 [
   {
+    "name": "StayNight",
+    "path": "/Tables/fact",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/dw/FactStayNight",
+        "itemId": "80449c14-0815-4fea-b2aa-fa5971dd7c83",
+        "workspaceId": "637db207-15ce-4862-8e0c-988caace7f03"
+      }
+    }
+  },
+  {
+    "name": "PropertyInventory",
+    "path": "/Tables/fact",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/dw/FactPropertyInventory",
+        "itemId": "80449c14-0815-4fea-b2aa-fa5971dd7c83",
+        "workspaceId": "637db207-15ce-4862-8e0c-988caace7f03"
+      }
+    }
+  },
+  {
     "name": "GuestSatisfaction",
     "path": "/Tables/fact",
     "target": {

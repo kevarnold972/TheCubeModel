@@ -1,3 +1,4 @@
+/// Guests who have booked a stay.
 table Guest
 	lineageTag: d8b09297-261f-4e76-8c0c-b1f7f0efac62
 	sourceLineageTag: [dim].[Guest]
@@ -15,6 +16,7 @@ table Guest
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Guest segment: Business, Leisure, Family or Extended Stay.
 	column GuestSegment
 		dataType: string
 		lineageTag: acad05ca-a4cf-419b-9550-98bafd8bb400
@@ -24,6 +26,7 @@ table Guest
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Loyalty program tier: None, Bronze, Silver, Gold or Platinum.
 	column LoyaltyTier
 		dataType: string
 		lineageTag: 1f06c157-768b-4e69-a179-832404b82245
@@ -33,6 +36,7 @@ table Guest
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Guest age band.
 	column AgeGroup
 		dataType: string
 		lineageTag: 1d050b9b-ee50-49e7-bd91-7725a674430f
@@ -42,6 +46,7 @@ table Guest
 
 		annotation SummarizationSetBy = Automatic
 
+	/// World region the guest lives in.
 	column HomeRegion
 		dataType: string
 		lineageTag: 8671589a-3448-4fed-adb4-c8f0aff0f428
@@ -51,6 +56,7 @@ table Guest
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Business identifier for the guest (e.g. G000001).
 	column GuestID
 		dataType: string
 		lineageTag: 7306a8f3-b786-4759-8e9e-ff83a3355f0f
@@ -60,6 +66,7 @@ table Guest
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Guest's full name. Personal data.
 	column GuestName
 		dataType: string
 		lineageTag: d8107be1-b2cf-4076-aee1-2ba9f023c654
@@ -69,6 +76,7 @@ table Guest
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Guest's email address. Personal data.
 	column Email
 		dataType: string
 		lineageTag: ab53d9d6-b3b9-4b19-a3fd-3de07f18ce41

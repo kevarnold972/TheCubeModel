@@ -1,3 +1,4 @@
+/// Add-on experience attached to a booking.
 table Experience
 	lineageTag: 1043339f-dcff-461f-bce6-35f777117241
 	sourceLineageTag: [dim].[Experience]
@@ -15,6 +16,7 @@ table Experience
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Name of the add-on experience.
 	column ExperienceName
 		dataType: string
 		lineageTag: a1233ee9-d184-440f-a777-eedc12630e6a
@@ -24,6 +26,7 @@ table Experience
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Experience category, e.g. Wellness, Adventure, Food and Beverage.
 	column ExperienceType
 		dataType: string
 		lineageTag: 79c55181-65c2-4520-bd06-531354463f20
